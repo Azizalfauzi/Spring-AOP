@@ -26,5 +26,6 @@ public class LogAspect {
     @Before("helloServiceMethod()")
     public void beforeHelloServiceMethod2() {
         log.info("Before HelloService method again");
+        log.info("Test error merge");
     }
 }
