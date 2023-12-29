@@ -24,6 +24,7 @@ public class LogAspect {
         String methodName = joinPoint.getSignature().getName();
         log.info("Before" + className + "." + methodName + "()");
     }
+
     @Around("helloServiceMethod()")
     public Object aroundHelloServiceMethod(ProceedingJoinPoint joinPoint) throws Throwable {
         String className = joinPoint.getTarget().getClass().getName();
@@ -44,9 +45,13 @@ public class LogAspect {
 
     }
 
-    @Before("pointcutHelloServiceStringParam()")
-    public void logStringParameter(JoinPoint joinPoint) {
-        String value = (String) joinPoint.getArgs()[0];
-        log.info("Execute method with parameter : " + value);
+    //    @Before("pointcutHelloServiceStringParam()")
+//    public void logStringParameter(JoinPoint joinPoint) {
+//        String value = (String) joinPoint.getArgs()[0];
+//        log.info("Execute method with parameter : " + value);
+//    }
+    @Before("pointcutHelloServiceStringParam() && args(name)")
+    public void logStringParameter(String name) {
+        log.info("Execute method with parameter : " + name);
     }
 }

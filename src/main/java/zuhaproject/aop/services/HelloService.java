@@ -11,6 +11,11 @@ public class HelloService {
         return "Hello " + name;
     }
 
+    public String hello(String firstName, String lastName) {
+        log.info("Call method hello");
+        return "Hello " + firstName + " " + lastName;
+    }
+
     public String bye(String name) {
         log.info("Call method bye");
         return "Bye " + name;
